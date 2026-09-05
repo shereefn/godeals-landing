@@ -294,15 +294,16 @@
     </svg>
   </div>
 
-  <script>
-    // Trigger redirect when a user selects a city
+<script>
+    // Trigger redirect to subdomain when a user selects a city
     const citySelect = document.getElementById('city-select');
     citySelect.addEventListener('change', (e) => {
       const city = e.target.value;
       
-      // Check if Riyadh was selected
-      if (city === 'riyadh') {
-        window.location.href = 'riyadh.html'; 
+      // Ensure a valid city is selected (not the placeholder)
+      if (city) {
+        // Redirects to https://riyadh.godeals.me
+        window.location.href = `https://${city}.godeals.me`; 
       }
     });
   </script>
