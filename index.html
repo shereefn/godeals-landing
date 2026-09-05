@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Deals in Your City</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,12 +17,13 @@
 
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
+      height: 100dvh; /* Adapts dynamically to mobile browser address bars */
+      width: 100vw;
       background: radial-gradient(circle at 50% 30%, #48c355 0%, #2fa33b 50%, #1c7c27 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden;
+      overflow: hidden; /* Strictly prevents vertical and horizontal scrolling */
       color: #ffffff;
     }
 
@@ -105,7 +106,7 @@
       border: none;
       outline: none;
       font-family: inherit;
-      font-size: 1.05rem;
+      font-size: 1.05rem; /* ~16px to prevent iOS zoom */
       font-weight: 700;
       color: #1e293b;
       padding: 10px 24px 10px 0;
