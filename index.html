@@ -21,33 +21,34 @@
       background: radial-gradient(circle at 50% 30%, #48c355 0%, #2fa33b 50%, #1c7c27 100%);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
       overflow-x: hidden;
       color: #ffffff;
-      padding-top: 50px;
     }
 
-    /* Main Content Area */
+    /* Main Content Area - Centered */
     .hero-content {
       width: 100%;
       max-width: 1100px;
-      padding: 0 20px;
+      padding: 20px;
+      flex: 1; /* Takes up available space to center vertically */
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       text-align: center;
       z-index: 2;
     }
 
-    /* One-line Bold Large Headline */
+    /* Responsive Headline */
     .headline {
-      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-size: clamp(1.75rem, 5vw, 3.25rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      white-space: nowrap;
+      line-height: 1.2;
       text-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
       margin-bottom: 28px;
+      max-width: 90vw;
     }
 
     /* Clean Matching Selectors */
@@ -57,6 +58,7 @@
       gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
+      width: 100%;
     }
 
     .select-wrapper {
@@ -69,6 +71,8 @@
                   0 2px 6px rgba(0, 0, 0, 0.08);
       padding: 4px 18px 4px 16px;
       transition: all 0.2s ease;
+      width: 100%;
+      max-width: 260px; /* Keeps them uniform on mobile */
     }
 
     .select-wrapper:hover,
@@ -106,6 +110,7 @@
       color: #1e293b;
       padding: 10px 24px 10px 0;
       cursor: pointer;
+      width: 100%;
     }
 
     /* Custom dropdown arrow */
@@ -122,7 +127,6 @@
     .city-illustration-wrap {
       width: 100%;
       line-height: 0;
-      margin-top: auto;
       z-index: 1;
     }
 
@@ -162,7 +166,8 @@
           </svg>
         </span>
         <select id="city-select" aria-label="Select City">
-          <option value="riyadh" selected>Riyadh</option>
+          <option value="" disabled selected>Choose city...</option>
+          <option value="riyadh">Riyadh</option>
         </select>
         <span class="dropdown-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -290,12 +295,15 @@
   </div>
 
   <script>
-    // Automatically redirect or trigger when city is chosen
+    // Trigger redirect when a user selects a city
     const citySelect = document.getElementById('city-select');
     citySelect.addEventListener('change', (e) => {
       const city = e.target.value;
-      console.log(`Selected City: ${city}`);
-      // window.location.href = `/deals/${city}`;
+      
+      // Check if Riyadh was selected
+      if (city === 'riyadh') {
+        window.location.href = 'riyadh.html'; 
+      }
     });
   </script>
 </body>
