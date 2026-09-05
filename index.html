@@ -1,195 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- Prevents iOS Safari from zooming in on dropdown clicks -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GoDeals | Find Local Offers</title>
-    <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-        
-        /* Vibrant animated gradient background */
-        body { 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            background: linear-gradient(135deg, #1a73e8, #00a859, #fbbc05);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            padding: 20px;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deals in Your City</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 40px 30px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 30%, #48c355 0%, #2fa33b 50%, #1c7c27 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      overflow-x: hidden;
+      color: #ffffff;
+      padding-top: 50px;
+    }
 
-        .logo { font-size: 32px; font-weight: 800; color: #1a73e8; margin-bottom: 10px; letter-spacing: -0.5px; }
-        .logo span { color: #00a859; }
-        
-        .subtitle { color: #5f6368; font-size: 15px; margin-bottom: 30px; line-height: 1.5; }
+    /* Main Content Area */
+    .hero-content {
+      width: 100%;
+      max-width: 1100px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+    }
 
-        /* Custom Input Styling */
-        .input-group { margin-bottom: 20px; text-align: left; }
-        .input-group label { display: block; font-size: 12px; font-weight: 700; color: #202124; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        select {
-            width: 100%;
-            padding: 16px;
-            font-size: 16px; /* 16px prevents iOS zoom */
-            border: 2px solid #e8eaed;
-            border-radius: 12px;
-            background-color: #ffffff;
-            color: #202124;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%235f6368%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px top 50%;
-            background-size: 12px auto;
-            transition: border-color 0.2s;
-            outline: none;
-            cursor: pointer;
-        }
+    /* One-line Bold Large Headline */
+    .headline {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+      margin-bottom: 28px;
+    }
 
-        select:focus { border-color: #1a73e8; }
-        select:disabled { background-color: #f1f3f4; cursor: not-allowed; opacity: 0.7; }
+    /* Clean Matching Selectors */
+    .selectors-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-        /* CTA Button */
-        .cta-btn {
-            width: 100%;
-            padding: 18px;
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            background: #1a73e8;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
-        }
+    .select-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 999px;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.16),
+                  0 2px 6px rgba(0, 0, 0, 0.08);
+      padding: 4px 18px 4px 16px;
+      transition: all 0.2s ease;
+    }
 
-        .cta-btn:hover:not(:disabled) { background: #1557b0; transform: translateY(-2px); box-shadow: 0 8px 16px rgba(26, 115, 232, 0.3); }
-        .cta-btn:active:not(:disabled) { transform: translateY(0); }
-        .cta-btn:disabled { background: #dadce0; color: #80868b; cursor: not-allowed; }
+    .select-wrapper:hover,
+    .select-wrapper:focus-within {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.22);
+    }
 
-        .footer-text { margin-top: 20px; font-size: 12px; color: #80868b; }
-    </style>
+    .flag-icon {
+      font-size: 1.35rem;
+      margin-right: 10px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .city-pin-icon {
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      color: #1c7c27;
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      padding: 10px 24px 10px 0;
+      cursor: pointer;
+    }
+
+    /* Custom dropdown arrow */
+    .dropdown-arrow {
+      position: absolute;
+      right: 16px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      color: #64748b;
+    }
+
+    /* Cityscape Drawing at Bottom */
+    .city-illustration-wrap {
+      width: 100%;
+      line-height: 0;
+      margin-top: auto;
+      z-index: 1;
+    }
+
+    .city-illustration-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="glass-card">
-        <div class="logo">go<span>deals</span>.me</div>
-        <p class="subtitle">Select your location to discover hypermarket offers and food deals near you.</p>
+  <!-- Top Hero Section -->
+  <main class="hero-content">
+    <h1 class="headline">Get the best deals in your city!</h1>
 
-        <div class="input-group">
-            <label for="country">1. Choose Country</label>
-            <select id="country" onchange="updateCities()">
-                <option value="" disabled selected>Select a country...</option>
-                <option value="sa">Saudi Arabia</option>
-                <option value="ae">United Arab Emirates</option>
-                <option value="in">India</option>
-            </select>
-        </div>
+    <div class="selectors-row">
+      <!-- Country Dropdown -->
+      <div class="select-wrapper">
+        <span class="flag-icon">🇸🇦</span>
+        <select id="country-select" aria-label="Select Country">
+          <option value="SA" selected>Saudi Arabia</option>
+        </select>
+        <span class="dropdown-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
 
-        <div class="input-group">
-            <label for="city">2. Choose City</label>
-            <select id="city" disabled onchange="checkSelection()">
-                <option value="" disabled selected>Select a country first</option>
-            </select>
-        </div>
-
-        <button id="goBtn" class="cta-btn" disabled onclick="navigateToCity()">Explore Deals</button>
-        
-        <div class="footer-text">Deals updated daily</div>
+      <!-- City Dropdown -->
+      <div class="select-wrapper">
+        <span class="city-pin-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </span>
+        <select id="city-select" aria-label="Select City">
+          <option value="riyadh" selected>Riyadh</option>
+        </select>
+        <span class="dropdown-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </div>
+  </main>
 
-    <script>
-        // Database of available locations and their subdomain prefixes
-        const locationData = {
-            "sa": {
-                name: "Saudi Arabia",
-                cities: [
-                    { name: "Riyadh", slug: "riyadh" },
-                    { name: "Jeddah", slug: "jeddah" },
-                    { name: "Dammam", slug: "dammam" },
-                    { name: "AlUla", slug: "alula" }
-                ]
-            },
-            "ae": {
-                name: "United Arab Emirates",
-                cities: [
-                    { name: "Dubai", slug: "dubai" },
-                    { name: "Abu Dhabi", slug: "abudhabi" }
-                ]
-            },
-            "in": {
-                name: "India",
-                cities: [
-                    { name: "Kochi", slug: "kochi" },
-                    { name: "Trivandrum", slug: "trivandrum" },
-                    { name: "Kozhikode", slug: "kozhikode" }
-                ]
-            }
-        };
+  <!-- Vector Illustration: Town, Skyline, Road, Cars, Trees & People -->
+  <div class="city-illustration-wrap">
+    <svg viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Sky tint background glow -->
+      <path d="M0 240Q720 180 1440 240V400H0Z" fill="#248a31" opacity="0.3"/>
 
-        const countrySelect = document.getElementById('country');
-        const citySelect = document.getElementById('city');
-        const goBtn = document.getElementById('goBtn');
+      <!-- Distant City Skyline Silhouettes -->
+      <rect x="120" y="140" width="70" height="140" rx="3" fill="#1b6324" opacity="0.5"/>
+      <rect x="200" y="100" width="85" height="180" rx="3" fill="#17561f" opacity="0.55"/>
+      <polygon points="242,50 200,100 285,100" fill="#17561f" opacity="0.55"/>
+      <rect x="300" y="160" width="60" height="120" rx="3" fill="#1b6324" opacity="0.5"/>
+      
+      <rect x="1060" y="130" width="90" height="150" rx="3" fill="#17561f" opacity="0.5"/>
+      <polygon points="1105,70 1060,130 1150,130" fill="#17561f" opacity="0.5"/>
+      <rect x="1160" y="160" width="75" height="120" rx="3" fill="#1b6324" opacity="0.55"/>
+      <rect x="1250" y="110" width="80" height="170" rx="3" fill="#17561f" opacity="0.5"/>
 
-        function updateCities() {
-            const countryCode = countrySelect.value;
-            citySelect.innerHTML = '<option value="" disabled selected>Select your city...</option>';
-            
-            if (countryCode && locationData[countryCode]) {
-                const cities = locationData[countryCode].cities;
-                cities.forEach(city => {
-                    const option = document.createElement('option');
-                    option.value = city.slug;
-                    option.textContent = city.name;
-                    citySelect.appendChild(option);
-                });
-                
-                citySelect.disabled = false;
-            } else {
-                citySelect.disabled = true;
-            }
-            checkSelection();
-        }
+      <!-- Midground Buildings -->
+      <rect x="420" y="180" width="110" height="100" rx="4" fill="#ffffff" opacity="0.95"/>
+      <polygon points="415,180 475,130 535,180" fill="#f87171"/>
+      <rect x="440" y="200" width="22" height="22" rx="2" fill="#93c5fd"/>
+      <rect x="480" y="200" width="22" height="22" rx="2" fill="#93c5fd"/>
+      <rect x="465" y="240" width="24" height="40" rx="2" fill="#475569"/>
 
-        function checkSelection() {
-            if (countrySelect.value && citySelect.value) {
-                goBtn.disabled = false;
-                goBtn.textContent = `Go to ${citySelect.options[citySelect.selectedIndex].text}`;
-            } else {
-                goBtn.disabled = true;
-                goBtn.textContent = "Explore Deals";
-            }
-        }
+      <rect x="560" y="150" width="130" height="130" rx="4" fill="#f1f5f9"/>
+      <rect x="580" y="170" width="22" height="25" rx="2" fill="#fde047"/>
+      <rect x="620" y="170" width="22" height="25" rx="2" fill="#fde047"/>
+      <rect x="660" y="170" width="22" height="25" rx="2" fill="#93c5fd"/>
+      <rect x="580" y="210" width="22" height="25" rx="2" fill="#93c5fd"/>
+      <rect x="620" y="210" width="22" height="25" rx="2" fill="#fde047"/>
+      <rect x="660" y="210" width="22" height="25" rx="2" fill="#93c5fd"/>
 
-        function navigateToCity() {
-            const citySlug = citySelect.value;
-            if (citySlug) {
-                // Redirects to https://riyadh.godeals.me
-                window.location.href = `https://${citySlug}.godeals.me`;
-            }
-        }
-    </script>
+      <rect x="710" y="190" width="100" height="90" rx="4" fill="#fed7aa"/>
+      <polygon points="705,190 760,145 815,190" fill="#ea580c"/>
+      <rect x="730" y="210" width="20" height="20" rx="2" fill="#ffffff"/>
+      <rect x="770" y="210" width="20" height="20" rx="2" fill="#ffffff"/>
+
+      <rect x="830" y="160" width="120" height="120" rx="4" fill="#ffffff"/>
+      <rect x="850" y="180" width="24" height="24" rx="2" fill="#93c5fd"/>
+      <rect x="890" y="180" width="24" height="24" rx="2" fill="#93c5fd"/>
+      <rect x="850" y="220" width="24" height="24" rx="2" fill="#93c5fd"/>
+      <rect x="890" y="220" width="24" height="24" rx="2" fill="#93c5fd"/>
+
+      <!-- Trees -->
+      <g>
+        <rect x="385" y="245" width="8" height="35" fill="#78350f"/>
+        <circle cx="389" cy="235" r="22" fill="#15803d"/>
+        <rect x="540" y="250" width="7" height="30" fill="#78350f"/>
+        <circle cx="543" cy="242" r="18" fill="#16a34a"/>
+        <rect x="965" y="245" width="8" height="35" fill="#78350f"/>
+        <circle cx="969" cy="235" r="20" fill="#15803d"/>
+      </g>
+
+      <!-- Pedestrians / People Walking -->
+      <g transform="translate(320, 240)">
+        <!-- Person 1 -->
+        <circle cx="10" cy="8" r="5" fill="#fcd34d"/>
+        <path d="M10 13V28M10 28L6 40M10 28L14 40M6 18L14 18" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Shopping Bag -->
+        <rect x="15" y="20" width="6" height="8" rx="1" fill="#ef4444"/>
+      </g>
+
+      <g transform="translate(1010, 242)">
+        <!-- Person 2 -->
+        <circle cx="8" cy="8" r="5" fill="#fbcfe8"/>
+        <path d="M8 13V26M8 26L4 38M8 26L12 38M4 17L12 17" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- Pavement / Sidewalk -->
+      <rect x="0" y="278" width="1440" height="12" fill="#cbd5e1"/>
+      <line x1="0" y1="278" x2="1440" y2="278" stroke="#94a3b8" stroke-width="2"/>
+
+      <!-- Main Roadway -->
+      <rect x="0" y="290" width="1440" height="110" fill="#334155"/>
+      <!-- Dashed White Lane Lines -->
+      <line x1="0" y1="345" x2="1440" y2="345" stroke="#f8fafc" stroke-width="4" stroke-dasharray="35 25"/>
+
+      <!-- Cars Driving -->
+      <!-- Red Car Left-to-Right -->
+      <g transform="translate(180, 305)">
+        <path d="M10 32L24 16H66L82 32H94C97 32 100 35 100 38V44C100 46 98 48 96 48H4C2 48 0 46 0 44V38C0 35 3 32 6 32H10Z" fill="#ef4444"/>
+        <!-- Car Windows -->
+        <path d="M26 30L34 18H48V30H26Z" fill="#bfdbfe"/>
+        <path d="M52 18H64L76 30H52V18Z" fill="#bfdbfe"/>
+        <!-- Wheels -->
+        <circle cx="24" cy="48" r="9" fill="#0f172a"/>
+        <circle cx="24" cy="48" r="4" fill="#cbd5e1"/>
+        <circle cx="76" cy="48" r="9" fill="#0f172a"/>
+        <circle cx="76" cy="48" r="4" fill="#cbd5e1"/>
+      </g>
+
+      <!-- Blue Sedan Right-to-Left -->
+      <g transform="translate(760, 315)">
+        <path d="M12 28L28 12H72L90 28H102C105 28 108 31 108 34V40C108 42 106 44 104 44H4C2 44 0 42 0 40V34C0 31 3 28 6 28H12Z" fill="#2563eb"/>
+        <!-- Windows -->
+        <path d="M30 26L38 15H52V26H30Z" fill="#e0f2fe"/>
+        <path d="M56 15H68L80 26H56V15Z" fill="#e0f2fe"/>
+        <!-- Wheels -->
+        <circle cx="26" cy="44" r="9" fill="#0f172a"/>
+        <circle cx="26" cy="44" r="4" fill="#cbd5e1"/>
+        <circle cx="82" cy="44" r="9" fill="#0f172a"/>
+        <circle cx="82" cy="44" r="4" fill="#cbd5e1"/>
+      </g>
+
+      <!-- Yellow Cab / Delivery Van -->
+      <g transform="translate(1200, 300)">
+        <path d="M5 35H110V18C110 14 106 10 102 10H50L30 35H5Z" fill="#eab308"/>
+        <path d="M52 14H95V30H38L52 14Z" fill="#fef08a"/>
+        <circle cx="32" cy="45" r="9" fill="#0f172a"/>
+        <circle cx="32" cy="45" r="4" fill="#cbd5e1"/>
+        <circle cx="88" cy="45" r="9" fill="#0f172a"/>
+        <circle cx="88" cy="45" r="4" fill="#cbd5e1"/>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    // Automatically redirect or trigger when city is chosen
+    const citySelect = document.getElementById('city-select');
+    citySelect.addEventListener('change', (e) => {
+      const city = e.target.value;
+      console.log(`Selected City: ${city}`);
+      // window.location.href = `/deals/${city}`;
+    });
+  </script>
 </body>
 </html>
