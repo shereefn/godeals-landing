@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Go Deals</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/nav.js" defer></script>
+  <style>
+    :root {
+      --primary-green: #22a63d;
+      --bg-gradient: linear-gradient(180deg, #167a2a 0%, #1f9d38 45%, #2bb848 100%);
+      --pedestal-dark: #1e293b;
+      --pedestal-curb: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .main-content-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px 4px;
+      min-height: 0;
+      z-index: 10;
+    }
+
+    .hero-title {
+      color: #ffffff;
+      font-size: clamp(20px, 2.8vw, 30px);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .glass-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: clamp(16px, 2.2vh, 26px) clamp(18px, 2.6vw, 32px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+      max-width: 820px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      max-height: calc(100vh - 210px);
+    }
+
+    .badge-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .badge-accent {
+      background: #e8f5e9;
+      color: var(--primary-green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .policy-section h2 {
+      font-size: clamp(13px, 1.4vw, 15px);
+      color: #0f172a;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .policy-section p {
+      font-size: clamp(12px, 1.2vw, 13.5px);
+      color: #475569;
+      line-height: 1.45;
+    }
+
+    .policy-section a {
+      color: var(--primary-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .policy-section a:hover {
+      text-decoration: underline;
+    }
+
+    .privacy-art-stage {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .privacy-svg {
+      width: 100%;
+      max-width: 960px;
+      height: 90px;
+      margin-bottom: -1px;
+    }
+
+    .pedestal-track {
+      width: 100%;
+      height: 38px;
+      background: var(--pedestal-dark);
+      border-top: 4px solid var(--pedestal-curb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pedestal-line {
+      width: 90%;
+      height: 3px;
+      border-top: 3px dashed rgba(255, 255, 255, 0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-content-wrap">
+    <h1 class="hero-title">Privacy & Data Transparency</h1>
+
+    <div class="glass-card">
+      <div class="badge-bar">
+        <span class="badge-accent">🛡️ User Safe</span>
+        <span style="font-size: 12px; color: #64748b;">Updated: 2026</span>
+      </div>
+      <br>
+
+      <div class="policy-section">
+        <h2>1. Zero Profile Tracking</h2>
+        <p>Go Deals provides fast promotional lookup without user registrations, customer accounts, or personal profile tracking. Searches run anonymously.</p>
+      </div>
+      <br>
+
+      <div class="policy-section">
+        <h2>2. Google AdSense & Third-Party Cookies</h2>
+        <p>Third-party partners, including Google, serve non-intrusive contextual ads using browsing cookies. You can manage or disable ad personalization anytime via <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">Google Ad Center</a> or universal cookie controls through <a href="https://www.aboutads.info" target="_blank" rel="noopener">aboutads.info</a>.</p>
+      </div>
+      <br>
+
+      <div class="policy-section">
+        <h2>3. Offer Accuracy & Retail Links</h2>
+        <p>Deals reflect external brochures. Store branches reserve rights on product availability and pricing adjustments. Always confirm terms in-store before checkout.</p>
+      </div>
+      <br>
+    </div>
+  </div>
+
+  <div class="privacy-art-stage">
+    <svg class="privacy-svg" viewBox="0 0 1000 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M120,110 L120,55 Q160,25 200,55 L200,110 Z" fill="#146a25" opacity="0.6"/>
+      <rect x="220" y="65" width="70" height="45" rx="4" fill="#146a25" opacity="0.5"/>
+      <path d="M800,110 L800,50 Q845,20 890,50 L890,110 Z" fill="#146a25" opacity="0.6"/>
+      <rect x="710" y="60" width="75" height="50" rx="4" fill="#146a25" opacity="0.5"/>
+
+      <!-- Cloud Backup Pod Left -->
+      <rect x="330" y="55" width="80" height="55" rx="8" fill="#ffffff"/>
+      <rect x="342" y="67" width="56" height="7" rx="3" fill="#93c5fd"/>
+      <rect x="342" y="80" width="56" height="7" rx="3" fill="#cbd5e1"/>
+      <circle cx="390" cy="70.5" r="2" fill="#22c55e"/>
+      <circle cx="390" cy="83.5" r="2" fill="#22c55e"/>
+
+      <!-- Center Data Shield Pillar -->
+      <polygon points="450,110 450,45 500,20 550,45 550,110" fill="#ffffff"/>
+      <path d="M500,42 L525,54 C525,72 513,87 500,94 C487,87 475,72 475,54 Z" fill="#22a63d"/>
+      <path d="M493,68 L499,74 L511,60" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Secure Locker Right -->
+      <rect x="590" y="50" width="85" height="60" rx="8" fill="#ffffff"/>
+      <rect x="605" y="62" width="24" height="24" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+      <circle cx="617" cy="72" r="3" fill="#0ea5e9"/>
+      <rect x="615" y="74" width="4" height="6" fill="#0ea5e9"/>
+      <rect x="640" y="65" width="22" height="5" rx="2" fill="#cbd5e1"/>
+      <rect x="640" y="76" width="22" height="5" rx="2" fill="#cbd5e1"/>
+    </svg>
+
+    <div class="pedestal-track">
+      <div class="pedestal-line"></div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -15,7 +15,7 @@
   <title>Deals in Your City</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
     * {
@@ -26,14 +26,15 @@
 
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      height: 100dvh; /* Adapts dynamically to mobile browser address bars */
+      height: 100dvh;
       width: 100vw;
       background: radial-gradient(circle at 50% 30%, #48c355 0%, #2fa33b 50%, #1c7c27 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow: hidden; /* Strictly prevents vertical and horizontal scrolling */
+      overflow: hidden;
       color: #ffffff;
+      position: relative;
     }
 
     /* Main Content Area - Centered */
@@ -41,7 +42,7 @@
       width: 100%;
       max-width: 1100px;
       padding: 20px;
-      flex: 1; /* Takes up available space to center vertically */
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -82,7 +83,7 @@
       padding: 4px 18px 4px 16px;
       transition: all 0.2s ease;
       width: 100%;
-      max-width: 260px; /* Keeps them uniform on mobile */
+      max-width: 260px;
     }
 
     .select-wrapper:hover,
@@ -115,7 +116,7 @@
       border: none;
       outline: none;
       font-family: inherit;
-      font-size: 1.05rem; /* ~16px to prevent iOS zoom */
+      font-size: 1.05rem;
       font-weight: 700;
       color: #1e293b;
       padding: 10px 24px 10px 0;
@@ -138,12 +139,43 @@
       width: 100%;
       line-height: 0;
       z-index: 1;
+      position: relative;
     }
 
     .city-illustration-wrap svg {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    /* Footer Links - Shifted upward with generous spacing instead of bullets */
+    .footer-links {
+      position: absolute;
+      bottom: 22px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      z-index: 10;
+    }
+
+    .footer-link {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-link:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6), 0 1px 4px rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
@@ -243,15 +275,12 @@
 
       <!-- Pedestrians / People Walking -->
       <g transform="translate(320, 240)">
-        <!-- Person 1 -->
         <circle cx="10" cy="8" r="5" fill="#fcd34d"/>
         <path d="M10 13V28M10 28L6 40M10 28L14 40M6 18L14 18" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- Shopping Bag -->
         <rect x="15" y="20" width="6" height="8" rx="1" fill="#ef4444"/>
       </g>
 
       <g transform="translate(1010, 242)">
-        <!-- Person 2 -->
         <circle cx="8" cy="8" r="5" fill="#fbcfe8"/>
         <path d="M8 13V26M8 26L4 38M8 26L12 38M4 17L12 17" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
       </g>
@@ -262,17 +291,14 @@
 
       <!-- Main Roadway -->
       <rect x="0" y="290" width="1440" height="110" fill="#334155"/>
-      <!-- Dashed White Lane Lines -->
       <line x1="0" y1="345" x2="1440" y2="345" stroke="#f8fafc" stroke-width="4" stroke-dasharray="35 25"/>
 
       <!-- Cars Driving -->
       <!-- Red Car Left-to-Right -->
       <g transform="translate(180, 305)">
         <path d="M10 32L24 16H66L82 32H94C97 32 100 35 100 38V44C100 46 98 48 96 48H4C2 48 0 46 0 44V38C0 35 3 32 6 32H10Z" fill="#ef4444"/>
-        <!-- Car Windows -->
         <path d="M26 30L34 18H48V30H26Z" fill="#bfdbfe"/>
         <path d="M52 18H64L76 30H52V18Z" fill="#bfdbfe"/>
-        <!-- Wheels -->
         <circle cx="24" cy="48" r="9" fill="#0f172a"/>
         <circle cx="24" cy="48" r="4" fill="#cbd5e1"/>
         <circle cx="76" cy="48" r="9" fill="#0f172a"/>
@@ -282,10 +308,8 @@
       <!-- Blue Sedan Right-to-Left -->
       <g transform="translate(760, 315)">
         <path d="M12 28L28 12H72L90 28H102C105 28 108 31 108 34V40C108 42 106 44 104 44H4C2 44 0 42 0 40V34C0 31 3 28 6 28H12Z" fill="#2563eb"/>
-        <!-- Windows -->
         <path d="M30 26L38 15H52V26H30Z" fill="#e0f2fe"/>
         <path d="M56 15H68L80 26H56V15Z" fill="#e0f2fe"/>
-        <!-- Wheels -->
         <circle cx="26" cy="44" r="9" fill="#0f172a"/>
         <circle cx="26" cy="44" r="4" fill="#cbd5e1"/>
         <circle cx="82" cy="44" r="9" fill="#0f172a"/>
@@ -302,17 +326,19 @@
         <circle cx="88" cy="45" r="4" fill="#cbd5e1"/>
       </g>
     </svg>
+
+    <!-- Plain Text Footer Links -->
+    <footer class="footer-links" aria-label="Legal and Platform Links">
+      <a href="/about.html" class="footer-link">About Us</a>
+      <a href="/privacy.html" class="footer-link">Privacy Policy</a>
+    </footer>
   </div>
 
-<script>
-    // Trigger redirect to subdomain when a user selects a city
+  <script>
     const citySelect = document.getElementById('city-select');
     citySelect.addEventListener('change', (e) => {
       const city = e.target.value;
-      
-      // Ensure a valid city is selected (not the placeholder)
       if (city) {
-        // Redirects to https://riyadh.godeals.me
         window.location.href = `https://${city}.godeals.me`; 
       }
     });
